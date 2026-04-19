@@ -1,0 +1,24 @@
+{
+  "name": "countdown",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frontend-only responsive countdown web app",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode development --open"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "html-webpack-plugin": "^5.6.3",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  }
+}

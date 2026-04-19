@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown</title>
+    <style>
+      :root {
+        color-scheme: dark light;
+        --bg: #0f1220;
+        --fg: #f5f7ff;
+        --muted: #8a90b4;
+        --accent: #7aa2ff;
+        --error: #ff9aa2;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body,
+      #root {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        background: radial-gradient(circle at top, #1b2045 0%, var(--bg) 60%);
+        color: var(--fg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        -webkit-font-smoothing: antialiased;
+      }
+      .app {
+        width: 100%;
+        max-width: 900px;
+        text-align: center;
+      }
+      .countdown {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: clamp(0.75rem, 2vw, 1.5rem);
+        margin: 2rem 0;
+      }
+      .unit {
+        min-width: 6rem;
+        padding: 1rem 1.25rem;
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(6px);
+      }
+      .value {
+        font-size: clamp(2rem, 6vw, 3.5rem);
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
+      }
+      .label {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .message {
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
+        margin: 2rem 0;
+      }
+      .error {
+        color: var(--error);
+      }
+      .helper {
+        margin-top: 2rem;
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+      .helper code {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 0.15rem 0.4rem;
+        border-radius: 0.35rem;
+        color: var(--accent);
+        word-break: break-all;
+      }
+      .helper a {
+        text-decoration: none;
+      }
+      .helper a:hover code {
+        background: rgba(255, 255, 255, 0.14);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
