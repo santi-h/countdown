@@ -24,6 +24,21 @@ const UNIT_ORDER: Array<{ key: keyof Breakdown; labels: UnitLabels }> = [
   { key: 'seconds', labels: { singular: 'Second', plural: 'Seconds' } },
 ];
 
+const BASE_TITLE = 'Countdown';
+
+function useDocumentTitle(title: string | undefined) {
+  useEffect(() => {
+    if (title !== undefined) document.title = title;
+  }, [title]);
+}
+
+function titleFor(parts: Breakdown): string {
+  const largest = UNIT_ORDER.find(({ key }) => parts[key] > 0) ?? UNIT_ORDER[UNIT_ORDER.length - 1];
+  const value = parts[largest.key];
+  const label = (value === 1 ? largest.labels.singular : largest.labels.plural).toLowerCase();
+  return `${BASE_TITLE} - ${value} ${label}`;
+}
+
 function CountdownDisplay({ target }: { target: Date }) {
   const [now, setNow] = useState(() => new Date());
 
@@ -32,11 +47,14 @@ function CountdownDisplay({ target }: { target: Date }) {
     return () => window.clearInterval(id);
   }, []);
 
-  if (now >= target) {
+  const expired = now >= target;
+  const parts = expired ? null : breakdown(now, target);
+  useDocumentTitle(parts ? titleFor(parts) : BASE_TITLE);
+
+  if (!parts) {
     return <div className="message">Countdown complete.</div>;
   }
 
-  const parts = breakdown(now, target);
   const firstNonZero = UNIT_ORDER.findIndex(({ key }) => parts[key] > 0);
   const visible = firstNonZero === -1 ? UNIT_ORDER.slice(-1) : UNIT_ORDER.slice(firstNonZero);
 
@@ -67,6 +85,8 @@ function buildExample(): { href: string; iso: string } {
 export function App() {
   const parsed = parseTarget();
   const example = buildExample();
+  // CountdownDisplay owns the title while it's mounted; otherwise fall back.
+  useDocumentTitle(parsed.kind === 'ok' ? undefined : BASE_TITLE);
 
   return (
     <main className="app">
