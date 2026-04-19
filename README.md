@@ -34,6 +34,8 @@ The landing page also shows a "Try it" link with a dynamically generated example
 Clone the repo and install dependencies:
 
 ```bash
+git clone git@github.com:santi-h/countdown.git
+cd countdown
 npm install
 ```
 
@@ -77,3 +79,7 @@ Because the build is just static files, deployment is a file copy. For GitHub Pa
 2. Commit and push the contents of `dist/` to the branch/path your Pages site is configured to serve (commonly `gh-pages`, or `docs/` on `main`).
 
 For other static hosts (Netlify, Vercel, S3, etc.), upload the contents of `dist/` as-is.
+
+## License
+
+[MIT](LICENSE) © 2026 Santiago H

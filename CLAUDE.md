@@ -17,6 +17,11 @@ A frontend-only, responsive countdown web app deployable as static files (e.g., 
   - Active countdown: `Countdown - <N> <unit>` where `<unit>` is the largest non-zero unit (e.g., `Countdown - 1 year`, `Countdown - 8 seconds`).
   - No target / invalid / complete: fall back to a sensible static title (e.g., `Countdown`).
 
+## Repository
+
+- Canonical home: <https://github.com/santi-h/countdown>.
+- Licensed under MIT (see `LICENSE`).
+
 ## Tech stack
 
 - Node v24.15.0 (pinned in `.node-version`).
